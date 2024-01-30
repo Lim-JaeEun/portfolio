@@ -80,6 +80,7 @@ function click_slide_inner(inner_div){
     item_inner_tl.to(inner_div,{
         opacity:1,
         duration:.7,
+        zIndex:2
     })
 
     return item_inner_tl;
