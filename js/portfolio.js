@@ -23,12 +23,12 @@ window.addEventListener('DOMContentLoaded',function(){
             left:'4%',
             backgroundColor:'#fff',
             ease:'power1.in',
-            duration:.3
+            duration:.4
         },'hover')
         item_hover_tl.to(show_info,{
             opacity:0,
-            //duration:.1,
-        },'hover')
+            duration:.1,
+        },'hover -=.5')
         item_hover_tl.to(hover_info,{
             opacity:1,
             color:'#000',
