@@ -706,7 +706,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   gap: 3vw;
   width: 100%;
   align-items: center;
-  background: linear-gradient(90deg, white, #fff7c8);
+  background: linear-gradient(90deg, white, #d4efff);
   margin-left: 1px;
   /*.img_height {
       @include img_height(130%, )
@@ -860,6 +860,9 @@ header .menu_wrap .nav_close_btn:hover .line {
   width: 31%;
   overflow: hidden;
 }
+.contents .sc_banner .banner_wrap .list .listItem:first-child .list_info .tit {
+  width: 80%;
+}
 @media (min-width: 480px) and (max-width: 767px) {
   .contents .sc_banner .banner_wrap .list .listItem {
     width: 100%;
@@ -899,6 +902,9 @@ header .menu_wrap .nav_close_btn:hover .line {
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(2) .img_height img {
   object-position: 36% 50%;
 }
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(2) .list_info .tit {
+  width: 60%;
+}
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(3) {
   width: 29%;
   margin-top: 5%;
@@ -916,6 +922,9 @@ header .menu_wrap .nav_close_btn:hover .line {
     margin-top: unset;
     margin-left: unset;
   }
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(3) .list_info .tit {
+  width: 65%;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(4) {
   width: 29%;
@@ -938,6 +947,9 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(4) .img_height img {
   object-position: 44% center;
+}
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(4) .list_info .tit {
+  width: 70%;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(5) {
   width: 50%;
@@ -975,8 +987,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   object-position: 44% center;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(5) .list_info .tit {
-  width: 60%;
-  margin: 0 auto;
+  width: 45%;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(6) {
   width: 60%;
@@ -1014,7 +1025,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   object-position: 42% center;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(6) .list_info .tit {
-  width: 80%;
+  width: 75%;
   margin: 0 auto;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(7) {
@@ -1049,6 +1060,10 @@ header .menu_wrap .nav_close_btn:hover .line {
     padding-top: 27%;
   }
 }
+.contents .sc_banner .banner_wrap .list .listItem:nth-child(7) .list_info .tit {
+  width: 69%;
+  margin: 0 auto;
+}
 .contents .sc_banner .banner_wrap .list .listItem .img_height {
   position: relative;
   width: 100%;
@@ -1081,7 +1096,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   bottom: 0;
   background: rgba(255, 255, 255, 0.5098039216);
   width: 100%;
-  padding-bottom: 0.5rem;
+  padding: 1rem 0 0.5rem;
   transition: 0.5s;
   opacity: 0;
   transform: translateY(100%);
@@ -1106,6 +1121,7 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 .contents .sc_banner .banner_wrap .list .listItem .list_info .tit {
   padding: 0 2em;
+  margin: 0 auto;
 }
 @media (min-width: 480px) and (max-width: 767px) {
   .contents .sc_banner .banner_wrap .list .listItem .list_info .tit {
@@ -1161,8 +1177,8 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 .contents .sc_banner .signature .img {
   position: relative;
-  width: 65%;
-  padding-top: 13%;
+  width: 900px;
+  padding-top: 10%;
 }
 .contents .sc_banner .signature .img img {
   position: absolute;
@@ -1269,8 +1285,8 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 .contents .sc_chart .tit_wrap .tit {
   line-height: 1;
-  font-size: 9em;
-  font-weight: bold;
+  font-size: 7em;
+  font-weight: 300;
 }
 @media (max-width: 479px) {
   .contents .sc_chart .tit_wrap .tit {
@@ -1278,7 +1294,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   }
 }
 .contents .sc_chart .tit_wrap .sub_tit {
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 300;
 }
 @media (max-width: 479px) {
@@ -1288,7 +1304,7 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 .contents .sc_chart .tit_wrap .explain {
   line-height: 1.5;
-  font-size: 2em;
+  font-size: 1.2em;
   padding-top: 0.5rem;
   font-weight: 300;
 }

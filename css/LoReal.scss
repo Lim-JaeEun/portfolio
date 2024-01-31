@@ -643,7 +643,7 @@ header {
                     width: 100%;
                     align-items: center;
                     // background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(251,251,251,1) 30%, rgba(213,213,213,0.6783088235294117) 100%);
-                    background: linear-gradient(90deg, white, #fff7c8);
+                    background: linear-gradient(90deg, white, #d4efff);
                     margin-left: 1px;
                     &::before {
                         content: '';
@@ -784,6 +784,13 @@ header {
                     width:31%;
                     // margin-right: 6.25%;
                     overflow: hidden;
+                    &:first-child {
+                        .list_info {
+                            .tit {
+                                width:80%;
+                            }
+                        }
+                    }
                     @include tablet(){
                         width: 100%;
                         display: flex;
@@ -816,6 +823,11 @@ header {
                                 object-position: 36% 50%;
                             }
                         }
+                        .list_info {
+                            .tit {
+                                width:60%;
+                            }
+                        }
 
                     }
                     &:nth-child(3) {
@@ -831,6 +843,12 @@ header {
                             margin-top: unset;
                             margin-left: unset;
                         }
+                        .list_info {
+                            .tit {
+                                width:65%;
+                            }
+                        }
+
                     }
                     &:nth-child(4) {
                         width:29%;
@@ -849,6 +867,11 @@ header {
                         .img_height{
                             img{
                                 object-position: 44% center;;
+                            }
+                        }
+                        .list_info {
+                            .tit {
+                                width:70%;
                             }
                         }
                     }
@@ -881,8 +904,7 @@ header {
                         }
                         .list_info {
                             .tit {
-                                width:60%;
-                                margin: 0 auto;
+                                width:45%;
                             }
                         }
                     }
@@ -915,7 +937,7 @@ header {
                         }
                         .list_info {
                             .tit {
-                                width:80%;
+                                width:75%;
                                 margin: 0 auto;
                             }
                         }
@@ -943,6 +965,12 @@ header {
                             }
                             padding-top: 126%;
                         }
+                        .list_info {
+                            .tit {
+                                width:69%;
+                                margin: 0 auto;
+                            }
+                        }
                     }
                     .img_height {
                         @include img_height(100%,131%, 89% 50%);
@@ -961,7 +989,7 @@ header {
                         bottom: 0;
                         background: #ffffff82;
                         width: 100%;
-                        padding-bottom: 0.5rem;
+                        padding: 1rem 0 .5rem;
                         transition: .5s;
                         opacity: 0;
                         transform: translateY(100%);
@@ -983,6 +1011,7 @@ header {
                         }
                         .tit {
                             padding: 0 2em;
+                            margin: 0 auto;
                             @include tablet(){
                                 width:230px !important;   
                                 margin:0 !important;
@@ -1033,7 +1062,7 @@ header {
             justify-content: center;
             align-items: center;
             .img {
-                @include img_height(65%,13%);
+                @include img_height(900px,10%);
                 @include mobile(){
                     @include img_height(95%, 19%)
                 }
@@ -1115,14 +1144,14 @@ header {
             margin: 0 auto;
             .tit {
                 line-height: 1;
-                font-size: 9em;
-                font-weight: bold;
+                font-size: 7em;
+                font-weight: 300;
                 @include mobile(){
                     font-size: 9em;
                 }
             }
             .sub_tit {
-                font-size: 3em;
+                font-size: 2.5em;
                 font-weight: 300;
                 @include mobile(){
                     font-size: 5.3em;
@@ -1130,7 +1159,7 @@ header {
             }
             .explain {
                 line-height: 1.5;
-                font-size: 2em;
+                font-size: 1.2em;
                 padding-top: 0.5rem;
                 font-weight: 300;
                 @include mobile(){

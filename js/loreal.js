@@ -466,10 +466,10 @@ responsive_event4.add("(max-width:479px)",()=>{
 
 const intro_background = bodymovin.loadAnimation({
     container: document.querySelector('.background_ani'), // 필수, 애니메이션 들어가는 곳 
-    path: 'https://lottie.host/719ccdc8-563e-4ff7-a562-6c394f879046/71wGDb1d70.json',// 필수(url 또는 json파일 다운로드 경로)
+    path: 'https://lottie.host/32fa6ca2-9bd1-497a-bf86-d0b5a0e23e3c/wwkhmaGCtU.json',// 필수(url 또는 json파일 다운로드 경로)
     renderer: 'svg', // 필수
     loop: true, // 반복재생
     autoplay: true // 자동재생
   });
-
+  intro_background.setSpeed(0.3); //속도조절
 
