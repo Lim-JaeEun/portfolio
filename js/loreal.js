@@ -16,21 +16,32 @@ window.onload = ()=>{
     const main_texts = document.querySelectorAll('.ani_text_svg');
     const main_texts_svg = document.querySelectorAll('.ani_text_svg img');
     const responsive_event0 = gsap.matchMedia();
-    gsap.from(main_texts,{
-        y:function(i,target){
-            return target.dataset.transformy+'%'
-        },
-        duration:1.5,
-        ease: "power2.out",
-        stagger:.5
+    responsive_event0.add("(min-width:1024px)",()=>{
+        gsap.from(main_texts,{
+            y:function(i,target){
+                return target.dataset.transformy+'%'
+            },
+            duration:1.5,
+            ease: "power2.out",
+            stagger:.5
+        })
     })
-    responsive_event0.add("(min-width:480px) and (max-width:1024px)",()=>{
-
+    responsive_event0.add("(min-width:480px) and (max-width:1023px)",()=>{
+        gsap.from(main_texts,{
+            y:function(i,target){
+                return target.dataset.transformy+'%'
+            },
+            duration:1.5,
+            ease: "power2.out",
+            stagger:.5
+        })
     })
     
     responsive_event0.add("(max-width:479px)",()=>{
         gsap.to(main_texts_svg,{
-            y:'0%',
+            y:function(i,target){
+                return target.dataset.transformy+'%'
+            },
             duration:1.5,
             ease: "power2.out",
             stagger:.5,

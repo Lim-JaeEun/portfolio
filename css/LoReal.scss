@@ -304,7 +304,7 @@ header {
                     img {
                         width: 100%;
                         @include mobile(){
-                            transform: translateY(100%);
+                            transform: translateY(130%);
                         }
                     }
                 }
@@ -352,9 +352,12 @@ header {
             background: #fff;
             @include tablet(){
                 padding: 3.5rem 0 1rem 0;
+                background: #fff;
+                gap: 5rem;
+                justify-content: flex-start;
             }
             @include mobile(){
-                padding: 3.5rem 0 1rem 0;
+                padding:5em 0 0;
             }
             .tit {
                 font-size: 4.5em;
@@ -367,6 +370,7 @@ header {
                 @include tablet(){
                     text-align: left;
                     transform: scale(1);
+                    font-size: 6.5em;
                 }
                 @include mobile(){
                     text-align: left;
@@ -445,12 +449,12 @@ header {
                     transform: translateX(-100%);
                     @include tablet(){
                         transform: translate(0%);
-                        background: #efefef;
+                        background: #fff;
                         font-size: 3em;
                     }
                     @include mobile(){
                         transform: translate(0%);
-                        background: #efefef;
+                        background: #fff;
                         font-size: 6em;
                         width: 100%;
                         border: 0;
@@ -473,7 +477,7 @@ header {
                                 display: block;
                                 @include tablet(){
                                     opacity: 1;
-                                    font-size: unset;
+                                    font-size: 1.2em; 
                                     transform: translateY(100%);
     
                                 }
@@ -499,7 +503,7 @@ header {
                     align-items: center;
                     @include tablet(){
                         transform: translateX(0%);
-                        background: #efefef;
+                        background: #fff;
                     }
                     @include mobile(){
                         display: none;
@@ -553,12 +557,8 @@ header {
             position: relative;
             display: flex;
             justify-content: space-between;
-            @include tablet(){
-                // flex-direction: column;
-                padding-top: 7em;
-            }
             @include mobile(){
-                padding-top: 3.5rem;
+                padding-top: 0;
             }
             .left_text_wrap {
                 display: flex;
@@ -567,7 +567,7 @@ header {
                 
                 @include tablet(){
                     justify-content: space-between;
-                    padding: 0 1.5em;
+                    padding: 5em 1.5em 0;
                     align-items: flex-start;
                     position: absolute;
                     z-index: 3;
@@ -575,7 +575,7 @@ header {
                 }
                 @include mobile(){
                     justify-content: space-between;
-                    padding: 0 1.5em;
+                    padding: 10em 1.5em 0;
                     align-items: flex-start;
                     flex-direction: column;
                     position: absolute;
@@ -597,12 +597,15 @@ header {
                         letter-spacing: 0;
                         transform: rotate(0deg);
                         font-size: 8.5em;
+                        font-weight: 500;
                     }
                     @include mobile(){
                         writing-mode: lr;
                         letter-spacing: 0;
                         transform: rotate(0deg);
                         align-self: flex-start;
+                        font-size: 8em;
+                        font-weight: 500;
                     }
                 }
                 .small_txt {
@@ -617,7 +620,7 @@ header {
                         align-self: flex-end;
                     }
                     @include mobile(){
-                        font-size: 2.95em;
+                        font-size: 3.5em;
                         width: 100%;
                         text-align: left;
                     }
@@ -645,6 +648,14 @@ header {
                     // background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(251,251,251,1) 30%, rgba(213,213,213,0.6783088235294117) 100%);
                     background: linear-gradient(90deg, white, #d4efff);
                     margin-left: 1px;
+                    @include tablet(){
+                        background: linear-gradient(0deg, white, #d4efff);
+                    }
+                    @include mobile(){
+                        background: linear-gradient(0deg, white, #d4efff);
+                        justify-content: flex-end;
+                        padding-bottom: 25em;
+                    }
                     &::before {
                         content: '';
                         position: absolute;
@@ -743,7 +754,7 @@ header {
                 justify-content: unset;
                 height:100%;
                 margin-top: unset;
-                padding: 1em 0 18em 3em;
+                padding: 1em 0 10em 3em;
             }
             @include mobile(){
                 position: relative;
@@ -751,13 +762,21 @@ header {
                 justify-content: unset;
                 height:100%;
                 margin-top: unset;
-                padding: 1em 0 18em 3em;
+                padding: 1em 0 8em 3em;
             }
             p{
                 line-height: .8;
                 font-size: 7em;
                 font-weight: 300;
                 letter-spacing: -0.04em;
+                @include tablet(){
+                    font-size: 8.5em;
+                    font-weight: 500;
+                }
+                @include mobile(){
+                    font-size: 8.5em;
+                    font-weight: 500;
+                }
             }
         }
         .banner_wrap {
@@ -1066,6 +1085,9 @@ header {
                 @include mobile(){
                     @include img_height(95%, 19%)
                 }
+                @include tablet() {
+                    @include img_height(90%, 18%)
+                }
             }
             .brands_identity {
                 width: 37%;
@@ -1149,12 +1171,20 @@ header {
                 @include mobile(){
                     font-size: 9em;
                 }
+                @include tablet(){
+                    font-size: 8.5em;
+                    font-weight: 500;
+                    padding-bottom: 0.3em;
+                }
             }
             .sub_tit {
                 font-size: 2.5em;
                 font-weight: 300;
                 @include mobile(){
                     font-size: 5.3em;
+                }
+                @include tablet(){
+                    font-size: 3.8em;
                 }
             }
             .explain {
@@ -1164,6 +1194,9 @@ header {
                 font-weight: 300;
                 @include mobile(){
                     font-size: 3em;
+                }
+                @include tablet(){
+                    font-size: 2.3em;
                 }
             }
         }
@@ -1262,9 +1295,9 @@ footer {
             flex:.5;
         }
         @include mobile(){
-            font-size: 5rem;
+            font-size: 4rem;
             padding-top: 2.5rem;
-            flex: .45;
+            flex: 0.35;
         }
         .track {
             display: flex;
