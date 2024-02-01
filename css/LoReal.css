@@ -949,7 +949,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   object-position: 44% center;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(4) .list_info .tit {
-  width: 70%;
+  width: 65%;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(5) {
   width: 50%;
@@ -987,7 +987,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   object-position: 44% center;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(5) .list_info .tit {
-  width: 45%;
+  width: 42%;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(6) {
   width: 60%;
@@ -1025,7 +1025,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   object-position: 42% center;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(6) .list_info .tit {
-  width: 75%;
+  width: 65%;
   margin: 0 auto;
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(7) {
@@ -1061,7 +1061,7 @@ header .menu_wrap .nav_close_btn:hover .line {
   }
 }
 .contents .sc_banner .banner_wrap .list .listItem:nth-child(7) .list_info .tit {
-  width: 69%;
+  width: 63%;
   margin: 0 auto;
 }
 .contents .sc_banner .banner_wrap .list .listItem .img_height {
