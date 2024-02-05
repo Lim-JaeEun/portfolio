@@ -34,6 +34,22 @@
    @return unquote($value); 
 }
 
+@media (min-width:1640px) and (min-height: 800px) {
+ body {font-size: 16px;} 
+}
+@media (min-width:992px) and (max-height: 799px) {
+ body { font-size: 1.7vh;}
+}
+@media (max-width:1300px) and (min-height: 800px) {
+ body {font-size: 1vw;}
+}
+@media screen and (max-width:991px) {
+ body {font-size: 16px;}
+}
+@media screen and (max-width:420px) {
+ body {font-size: 14px;}
+}
+
 $shadows-small:  multiple-box-shadow(2000,#5bf3ff);
 $shadows-medium: multiple-box-shadow(1000,#fff);
 $shadows-big:    multiple-box-shadow(300,#fff);
@@ -404,7 +420,7 @@ body {
             position: fixed;
             top: 50%;
             transform: translateY(-50%) rotateZ(-1.6deg);
-            left: 10%;
+            left: 13em;
             
             z-index: 3;
 
@@ -423,9 +439,8 @@ body {
 
 
                 
-                width:calc(36em * 3.5); 
+                width:calc(36*3.5em - 19em); 
                 overflow: hidden;
-                padding-right: 20em;
                 .item {
                     position: relative;
                     margin: 1em;
@@ -553,7 +568,7 @@ body {
                         width: 100%;
                         gap: 5em;
                         padding: 0 4em;
-
+                        align-items: center;
                         .left_side {
                             display: flex;
                             flex-direction: column;
@@ -594,11 +609,10 @@ body {
                             position: relative;
                            
                             .img_wrap {
-                                padding-top: 56%;
+                                padding-top: 56.26%;
                                 position: relative;
                                 width: 100%;
-                                height: 100%;
-
+ 
                                 img {
                                     object-fit: cover;
                                     position: absolute;

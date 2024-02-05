@@ -152,58 +152,61 @@ gird_circles.forEach((circle,idx) =>{
 })
 
 /*슬라이드*/
-
-const sliders = [...document.querySelectorAll('.slider')];
-sliders.forEach((slider)=>{
-    let isDragStart = false;
-    let isDragging = false;
-    let isSlide = false;
-    let prevPageX,prevScrollLeft,positionDiff;
-    const sliderItem = slider.querySelectorAll('.item');
-
-
-    const dragStar=(e)=>{
-        if(isSlide) return;
-        isSlide = true;
-        isDragStart = true;
-        prevPageX = e.pageX || e.touches[0].pageX;
-        prevScrollLeft = slider.scrollLeft;
-        setTimeout(() => {
-            isSlide = false
-        }, 700);
-
-    }   
-
-    const dragging = (e) =>{
-        if(!isDragStart) return;
-
-        isDragging = true;
-        slider.classList.add('dragging');
-        positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
-        slider.scrollLeft = prevScrollLeft - positionDiff;
-        e.preventDefault();
-    }
-
-    const dragStop = () =>{
-        isDragStart = false;
-        slider.classList.remove('dragging')
-        if(!isDragging) return;
-        isDragging = false;
-
-        
-    }
-    slider.addEventListener("mousedown", dragStar);
-    slider.addEventListener("touchstart", dragStar);
-
-    slider.addEventListener("mousemove", dragging);
-    slider.addEventListener("touchmove", dragging);
-
-    slider.addEventListener("mouseup", dragStop);
-    slider.addEventListener("touchend", dragStop);
-    slider.addEventListener("mouseleave", dragStop);
-
-})
-
+const slide_func = () =>{
+    const sliders = [...document.querySelectorAll('.slider')];
+    sliders.forEach((slider)=>{
+        let isDragStart = false;
+        let isDragging = false;
+        let isSlide = false;
+        let prevPageX,prevScrollLeft,positionDiff;
+        const sliderItem = slider.querySelectorAll('.item');
+    
+    
+        const dragStar=(e)=>{
+            if(isSlide) return;
+            isSlide = true;
+            isDragStart = true;
+            prevPageX = e.pageX || e.touches[0].pageX;
+            prevScrollLeft = slider.scrollLeft;
+            setTimeout(() => {
+                isSlide = false
+            }, 700);
+    
+        }   
+    
+        const dragging = (e) =>{
+            if(!isDragStart) return;
+    
+            isDragging = true;
+            slider.classList.add('dragging');
+            positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX;
+            slider.scrollLeft = prevScrollLeft - positionDiff;
+            e.preventDefault();
+        }
+    
+        const dragStop = () =>{
+            isDragStart = false;
+            slider.classList.remove('dragging')
+            if(!isDragging) return;
+            isDragging = false;
+    
+            
+        }
+        slider.addEventListener("mousedown", dragStar);
+        slider.addEventListener("touchstart", dragStar);
+    
+        slider.addEventListener("mousemove", dragging);
+        slider.addEventListener("touchmove", dragging);
+    
+        slider.addEventListener("mouseup", dragStop);
+        slider.addEventListener("touchend", dragStop);
+        slider.addEventListener("mouseleave", dragStop);
+    
+    })
+    
+}
+window.addEventListener('load',slide_func);
+window.addEventListener('resize',slide_func)
 
 /*lottie icon*/
 
