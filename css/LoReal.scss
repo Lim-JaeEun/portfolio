@@ -237,6 +237,7 @@ header {
                 }
                 .ani_text_svg {
                     position: relative;
+                    opacity: 1;
                     @include mobile(){
                         display: block;
                         overflow: hidden;

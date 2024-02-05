@@ -12,7 +12,6 @@ gsap.ticker.add((time)=>{
 gsap.ticker.lagSmoothing(0)
 
 //메인
-window.onload = ()=>{
     const main_texts = document.querySelectorAll('.ani_text_svg');
     const main_texts_svg = document.querySelectorAll('.ani_text_svg img');
     const responsive_event0 = gsap.matchMedia();
@@ -22,6 +21,7 @@ window.onload = ()=>{
                 return target.dataset.transformy+'%'
             },
             duration:1.5,
+            opacity:0,
             ease: "power2.out",
             stagger:.5
         })
@@ -48,7 +48,6 @@ window.onload = ()=>{
             delay:.5
         })
     })
-}
 
 /*nav_btn*/
 const nav_tl = gsap.timeline({

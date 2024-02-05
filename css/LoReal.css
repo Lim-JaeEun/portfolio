@@ -236,6 +236,7 @@ header .menu_wrap .nav_close_btn:hover .line {
 }
 .contents .sc_visual .visual_wrap .visual_text .ani_text_svg {
   position: relative;
+  opacity: 1;
 }
 @media (max-width: 479px) {
   .contents .sc_visual .visual_wrap .visual_text .ani_text_svg {

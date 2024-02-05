@@ -53,6 +53,10 @@ function resize(){
     drawImage();
 
 }
+const canvas_background_img = document.querySelector('.preview_img');
+setTimeout(() => {
+    canvas_background_img.style.display='none'
+}, 100);
 
 function drawImage(){
     ctx.clearRect(0,0,canvasWidth,canvasHeight)
@@ -155,6 +159,11 @@ function remove_Percent(){
     
 }
 
+
+
+
+
+
 const circle = document.querySelector('.arrow_bottom');
 const circle_innerText = document.querySelector('.circle_text');
 
@@ -230,6 +239,7 @@ function onMouseDown(e){
     if(isMouseDown) return;
     isMouseDown = true;
     prevPos = {x:e.offsetX, y:e.offsetY}
+  
 }
 function onMouseUp(){
     isMouseDown = false;
@@ -242,11 +252,15 @@ function onMouseMove(e){
 
 
 canvas.addEventListener('mousedown',onMouseDown)
-canvas.addEventListener('mouseup',onMouseUp)
-canvas.addEventListener('mousemove',onMouseMove)
-resize();
-window.addEventListener('resize',resize)
+canvas.addEventListener('touchstart',onMouseDown)
 
+canvas.addEventListener('mouseup',onMouseUp)
+canvas.addEventListener('touchend',onMouseUp)
+
+canvas.addEventListener('mousemove',onMouseMove)
+canvas.addEventListener("touchmove", onMouseMove);
+window.addEventListener('resize',resize)
+resize();
 
 
 /*nav_Btn click*/
