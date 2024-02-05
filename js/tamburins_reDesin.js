@@ -98,10 +98,14 @@ function getAngle(p1,p2) {
     return Math.atan2(dy,dx);
 }
 function drawCircles(e){
-    let nextPos = {x:e.offsetX, y:e.offsetY};
+    let nextPos;
+    if(e.touches == undefined) {
+        nextPos = {x:e.offsetX, y:e.offsetY};
+    }else {
+        nextPos = {x:e.touches[0].clientX, y:e.touches[0].clientY};
+    }
     const dist = getDistance(prevPos, nextPos);
     const angle = getAngle(prevPos, nextPos);
-
     for(let i=0; i<dist; i++){
         let x = prevPos.x + Math.cos(angle) * i;
         let y = prevPos.y + Math.sin(angle) * i;
@@ -238,7 +242,7 @@ circle.addEventListener('click',(e)=>{
 function onMouseDown(e){
     if(isMouseDown) return;
     isMouseDown = true;
-    prevPos = {x:e.offsetX, y:e.offsetY}
+    prevPos ={x:e.offsetX ||e.touches[0].clientX, y:e.offsetY||e.touches[0].clientY};
   
 }
 function onMouseUp(){
