@@ -53,10 +53,7 @@ function resize(){
     drawImage();
 
 }
-const canvas_background_img = document.querySelector('.preview_img');
-setTimeout(() => {
-    canvas_background_img.style.display='none'
-}, 100);
+
 
 function drawImage(){
     ctx.clearRect(0,0,canvasWidth,canvasHeight)
@@ -129,6 +126,9 @@ function throttle(callbackFn, timeout) {
     }
 } 
 function remove_Percent(){
+    const canvas_background_img = document.querySelector('.preview_img');
+    canvas_background_img.style.display='none';
+
     throttle(()=>{
         const pixels = ctx.getImageData(0,0,canvasWidth,canvasHeight);
         const gap = 32;
@@ -139,6 +139,8 @@ function remove_Percent(){
             if(pixels.data[i+3] == 0) count ++;
         }
         percent = Math.round(count/totalLength * 100);
+
+  
         if(percent > 60) {
             gsap.to(canvas,{
                 opacity:0, 
@@ -155,17 +157,13 @@ function remove_Percent(){
                 ease:'power2.out',
                 onComplete:()=>{
                     //document.querySelector('body').classList.add('main_complete');
-                    isEnd = true
+                    isEnd = true 
                 }
             })
         }
     },500)
     
 }
-
-
-
-
 
 
 const circle = document.querySelector('.arrow_bottom');
@@ -185,8 +183,6 @@ const next_section_Btn = document.querySelector(".next_section_btn > a");
 const elem = document.querySelector(next_section_Btn.getAttribute("href"));
 
 const regex = /[^0-9]/g;
-//const vw_to_px = parseInt(circle_wrap_width.replace(regex,''));
-//let circle_innerTxt_width = vw_to_px*(canvasParents.clientWidth/100);
 const linkST = ScrollTrigger.create({
     trigger:elem,
     start:'top top'
@@ -199,7 +195,6 @@ ScrollTrigger.create({
 circle.addEventListener('click',(e)=>{
     e.preventDefault();
     //setTimeout(() => {
-
         gsap.to('.arrow_bottom',{
            // position:'sticky',
             left:'0%',
@@ -238,7 +233,6 @@ circle.addEventListener('click',(e)=>{
 
 })
 
-
 function onMouseDown(e){
     if(isMouseDown) return;
     isMouseDown = true;
@@ -268,34 +262,38 @@ resize();
 
 
 /*nav_Btn click*/
-const timeline01 = gsap.timeline({
-    paused:true
-});
-timeline01.to('.line',{
-    opacity:0,
-    duration:.3
-},0)
-timeline01.to('.hamburger-lines',{
-    width:'379px',
-    ease:'power1.out',
-    duration:.5,
-    //opacity:1,
-})
-timeline01.to('.left_menu',{
-    opacity:1,
-    zIndex:5,
-    duration:.3,
 
-},'>')
-timeline01.to('.left_menu .menu_item',{
-    opacity:1,
-    ease:'power1.out',
-    y:0,
-    stagger:{
-        each:.15,
-        from:"start"
-    },
-},'>')
+const nav_btn = () =>{
+    const nav_timeline = gsap.timeline({paused:true})
+    nav_timeline.to('.line',{
+        opacity:0,
+        duration:.3
+    },0)
+
+    nav_timeline.to('.hamburger-lines',{
+        width:'379px',
+        ease:'power1.out',
+        duration:.5,
+        //opacity:1,
+    })
+    nav_timeline.to('.left_menu',{
+        opacity:1,
+        zIndex:5,
+        duration:.3,
+    
+    },'>')
+    nav_timeline.to('.left_menu .menu_item',{
+        opacity:1,
+        ease:'power1.out',
+        y:0,
+        stagger:{
+            each:.15,
+            from:"start"
+        },
+    },'>')
+
+    return nav_timeline;
+}
 
 ScrollTrigger.config({syncInterval: 500 });
 const perfumeTL = gsap.timeline({
@@ -358,72 +356,7 @@ bestSeller_slider.addEventListener('mouseleave',()=>{
         opacity:0,
     })
 })
-   /*
-   bestSeller_slider.addEventListener('mouseenter',(e)=>{
-    setTimeout(() => {
-        gsap.to(bestSeller_cursor,{
-            display:'block',
-            opacity:1,
-            scale:1.2,
-            duration:1,
-            //ease:'power1.out',
-            x:e.clientX,
-            y:e.clientY,
-        })
-    }, 100);
-    
-    })
-    bestSeller_slider.addEventListener('pointermove',movecursor);
-    function movecursor(e){
-        gsap.to(bestSeller_cursor, {
-            duration: 0.5,
-            x: e.clientX,
-            y: e.clientY,
-        });
-    }
-    bestSeller_slider.addEventListener('mouseleave',()=>{
-            gsap.to(bestSeller_cursor,{
-                opacity:0,
-                scale:1,
-                display:'none'
-                //ease:'power1.out',
-            })
-
-    })
-*/
-
-
-
-
-  /*  bestSeller_slider.addEventListener('mouseenter',(e)=>{
-        gsap.set(bestSeller_cursor,{
-            opacity:1,
-            scale:1.2,
-            duration:1.5,
-            ease:'power1.out',
-            xPercent:-50,
-            yPercent:-50
-        })
-    
-    })
-    
-    bestSeller_slider.addEventListener('pointermove',(e)=>{
-        gsap.to(bestSeller_cursor,{
-            x:e.layerX,
-            y:e.layerY,
-            ease:'power1.out',
-            duration:1
-        })
-    })
-    bestSeller_slider.addEventListener('mouseleave',(e)=>{
-        gsap.to(bestSeller_cursor,{
-            opacity:0,
-            scale:1,
-            duration:1,
-            ease:'power1.out',
-        })
-    })*/
-//})(); 
+ 
 const best_img = document.querySelector('.best_img');
 const hide_img = document.querySelector('.hide');
 let ratio_chk = true;
@@ -497,30 +430,7 @@ collection.to('.video_wrap > video',{
     ease:'power1.out'
 
 },0)
-/*
-const list_img = document.querySelectorAll('.schedule .list');
 
-list_img.forEach((el,idx) =>{
-    
-    //let index = el.children('.list_img')
-    //console.log(el.childNodes[1]);
-    //gsap.set(".list_img", {xPercent: -50, yPercent: -50});
-    const xSet = gsap.quickSetter(el.childNodes[1], 'x', 'px');
-    el.addEventListener('mousemove',(e)=>{
-            gsap.to(el.childNodes[1],{
-                xPercent:xSet(e.x),
-                yPercent:e.offsetY,
-                opacity: 1,
-            })
-
-    })
-    el.addEventListener('mouseleave',()=>{
-        gsap.to(el.childNodes[1],{
-            opacity:0,
-        })
-    })
-})
-*/
 const cursor_wrap = document.querySelector('.schedule_warp');
 const schedule_list = document.querySelectorAll(".schedule .list");
 let cursor_list = document.querySelector('.cursor_list_wrap');
@@ -562,24 +472,13 @@ banner_wrap.addEventListener('mouseout',()=>{
     })
 })
 
-
+const nav_play_func = nav_btn();
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
-    timeline01.restart();
+    
+    nav_play_func.play();
 })
 window.addEventListener('scroll',()=>{
-    timeline01.timeScale(1.5);
-    timeline01.reverse();
+    nav_play_func.timeScale(1.5);
+    nav_play_func.reverse();
 })
-
-/*
-const bottom = document.querySelector('#bottom')
-const policy_btn = document.querySelector('.policy_btn');
-policy_btn.addEventListener('click',()=>{
-    gsap.to('.policy_wrap',{
-        ease:'power1.out',
-        height:'auto',
-        scrollTo:bottom.start,
-    })
-})
-*/
 

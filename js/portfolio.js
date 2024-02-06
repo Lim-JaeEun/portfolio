@@ -1,6 +1,5 @@
-window.addEventListener('DOMContentLoaded',function(){
- 
-    /*포트폴리오 텍스트 아치형으로 만들기 */
+/*포트폴리오 텍스트 아치형으로 만들기 */
+const text_arc = () =>{
     document.querySelector('.portfolio').style.opacity = 1;
     const circle_innerText = document.querySelector('.portfolio p');
     const s_circle = document.querySelector('.circle_s').offsetWidth;
@@ -12,9 +11,12 @@ window.addEventListener('DOMContentLoaded',function(){
     circle_inner_span.forEach((el)=>{
         el.style.transformOrigin = `0 ${s_circle/1.8}px`;
     })
- 
+}
 
-    /* 슬라이드 아이템 호버시 효과주기 */
+
+/* 슬라이드 아이템 호버시 효과주기 */
+const hover_slide=()=>{
+
     const slide_item_func = (title_wrap,show_info,hover_info) =>{
         const item_hover_tl = gsap.timeline({paused:true});
         item_hover_tl.to(title_wrap,{
@@ -38,6 +40,7 @@ window.addEventListener('DOMContentLoaded',function(){
         return item_hover_tl;
     }
 
+
     const slide_item = gsap.utils.toArray('.item_wrap .item');
     slide_item.forEach(el=>{
         const title_wrap =el.childNodes[3];
@@ -52,9 +55,10 @@ window.addEventListener('DOMContentLoaded',function(){
             hover_anim.reverse();
         });
     })
+}
 
 
-})
+
 
 /* 슬라이드 아이템 클릭시 세부내용 보여주기 */
 
@@ -150,7 +154,6 @@ gird_circles.forEach((circle,idx) =>{
 
     })
 })
-
 /*슬라이드*/
 const slide_func = () =>{
     const sliders = [...document.querySelectorAll('.slider')];
@@ -192,6 +195,7 @@ const slide_func = () =>{
     
             
         }
+
         slider.addEventListener("mousedown", dragStar);
         slider.addEventListener("touchstart", dragStar);
     
@@ -201,12 +205,21 @@ const slide_func = () =>{
         slider.addEventListener("mouseup", dragStop);
         slider.addEventListener("touchend", dragStop);
         slider.addEventListener("mouseleave", dragStop);
-    
+
+
     })
-    
+    let item_width = document.querySelectorAll('.item')[0].clientWidth;
+    document.querySelector('.slider').style.width = `${innerWidth - (item_width/2.6)}px`
 }
-window.addEventListener('load',slide_func);
-window.addEventListener('resize',slide_func)
+window.addEventListener('load',()=>{
+    text_arc();
+    slide_func();
+    hover_slide();
+});
+window.addEventListener('resize',()=>{
+    slide_func();
+})
+
 
 /*lottie icon*/
 
