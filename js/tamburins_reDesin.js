@@ -296,6 +296,8 @@ const nav_btn = () =>{
 }
 
 ScrollTrigger.config({syncInterval: 500 });
+
+
 const perfumeTL = gsap.timeline({
     delay:1,
     scrollTrigger:{
@@ -313,10 +315,12 @@ const perfumeTL = gsap.timeline({
 perfumeTL.to('.item_txt',{
     display:'block',
     stagger:1,
+    ease:'power1.in'
 },0)
 perfumeTL.to('.item_img',{
     display:'block',
     stagger:1,
+    ease:'power1.in'
    //onEnter:()=>{console.log("onEnter");}
 },0)
 
