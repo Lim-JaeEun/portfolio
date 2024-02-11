@@ -152,7 +152,6 @@ function remove_Percent(){
             })
             gsap.to('.arrow_bottom',{
                 opacity:1,
-                duration:1,
                 top:'-25%',
                 ease:'power2.out',
                 onComplete:()=>{
@@ -297,33 +296,24 @@ const nav_btn = () =>{
 
 ScrollTrigger.config({syncInterval: 500 });
 
-
-const perfumeTL = gsap.timeline({
-    delay:1,
+const li_item = gsap.utils.toArray('.items > li');
+const new_item_TL = gsap.timeline({
+    delay:.5,
     scrollTrigger:{
         trigger:'.new_item_wrap',
         start:'top top',
-        end:'+=2000',
-        scrub:true,
+        end:'+=6000',
+        scrub:1.5,
         pin:true,
-        anticipatePin:.3, 
-        //markers:true
     }
-
 })
 
-perfumeTL.to('.item_txt',{
-    display:'block',
-    stagger:1,
-    ease:'power1.in'
-},0)
-perfumeTL.to('.item_img',{
-    display:'block',
-    stagger:1,
-    ease:'power1.in'
-   //onEnter:()=>{console.log("onEnter");}
-},0)
-
+li_item.forEach(el=>{
+    new_item_TL.to(el,{
+        autoAlpha:1,
+        duration:.1
+    })
+})
 
 /*Best seller 마우스커서변형*/
 const bestItem_swiper = new Swiper(".bestItem_swiper",{
