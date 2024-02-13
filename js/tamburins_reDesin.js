@@ -8,6 +8,7 @@ let currentIdx = 0;
 
 let isMouseDown = false;
 let prevPos = {x:0, y:0};
+let test = false;
 
 let percent = 0;
 
@@ -231,11 +232,25 @@ circle.addEventListener('click',(e)=>{
 
 
 })
+function scratch_txt(e){
+    const moving_txt = gsap.timeline({paused:true})
+    moving_txt.to('.scratch_txt',{
+        x:e.pageX + 20,
+        y:e.pageY + 20,
+    })
+    moving_txt.to('.scratch_txt',{
+        opacity:1,
+        ease:'power1.out',
+    })
+    return moving_txt;
+}
 
 function onMouseDown(e){
     if(isMouseDown) return;
     isMouseDown = true;
+    test = true;
     prevPos ={x:e.offsetX ||e.touches[0].clientX, y:e.offsetY||e.touches[0].clientY};
+
   
 }
 function onMouseUp(){
@@ -243,9 +258,31 @@ function onMouseUp(){
 
 }
 function onMouseMove(e){
+    //const testfunc = scratch_txt(e);
+    //console.log(test);
+    if(test === false){
+        gsap.to('.scratch_txt',{
+            x:e.pageX + 20,
+            y:e.pageY + 20,
+        })
+        gsap.to('.scratch_txt',{
+            opacity:1,
+            ease:'power1.out',
+            delay:.3
+        })
+    }else {
+        gsap.to('.scratch_txt',{
+            opacity:0,
+            ease:'power1.out',
+            delay:.2
+        })
+    }
     if(!isMouseDown || isEnd) return;
     drawCircles(e);
+    
+
 }
+
 
 
 canvas.addEventListener('mousedown',onMouseDown)
@@ -254,7 +291,8 @@ canvas.addEventListener('touchstart',onMouseDown)
 canvas.addEventListener('mouseup',onMouseUp)
 canvas.addEventListener('touchend',onMouseUp)
 
-canvas.addEventListener('mousemove',onMouseMove)
+
+canvas.addEventListener('mousemove', onMouseMove)
 canvas.addEventListener("touchmove", onMouseMove);
 window.addEventListener('resize',resize)
 resize();
@@ -296,23 +334,30 @@ const nav_btn = () =>{
 
 ScrollTrigger.config({syncInterval: 500 });
 
-const li_item = gsap.utils.toArray('.items > li');
+const new_items = gsap.utils.toArray('.items > li');
 const new_item_TL = gsap.timeline({
-    delay:.5,
+    delay:.5,  
     scrollTrigger:{
         trigger:'.new_item_wrap',
         start:'top top',
-        end:'+=6000',
-        scrub:1.5,
-        pin:true,
+        end:'+=4000',
+        scrub:1,
+        pin:true, 
+        //onUpdate: (self) => console.log("progress:", self.progress*100),
+
     }
 })
+new_items.forEach((el,idx)=>{
+    if(idx !==0) {
+        new_item_TL.to(el,{
+            left:0,
+            ease:'power2.in',
+            onUpdate:(el) => console.log("progress:", el),
 
-li_item.forEach(el=>{
-    new_item_TL.to(el,{
-        autoAlpha:1,
-        duration:.1
-    })
+            //스케일키우기
+        })
+    }
+
 })
 
 /*Best seller 마우스커서변형*/
@@ -468,7 +513,6 @@ banner_wrap.addEventListener('mouseout',()=>{
 
 const nav_play_func = nav_btn();
 document.querySelector('.hamburger-lines').addEventListener('click',()=>{
-    
     nav_play_func.play();
 })
 window.addEventListener('scroll',()=>{
