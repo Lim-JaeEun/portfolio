@@ -8,7 +8,7 @@ let currentIdx = 0;
 
 let isMouseDown = false;
 let prevPos = {x:0, y:0};
-let test = false;
+let scratch_flag = false;
 
 let percent = 0;
 
@@ -24,8 +24,7 @@ window.onload=()=>{
         setTimeout(()=>{
             window.scrollTo({
                 top:0,
-                left:0,
-                //behavior:'smooth'
+                left:0, 
             })
         },50)
 
@@ -38,15 +37,6 @@ function resize(){
     canvas.height = canvasHeight;
     canvas.style.width = canvasWidth+'px';
     canvas.style.height = canvasHeight+'px';
-    
-    //mainChk == true ? canvas.removeEventListener('mousemove',onMouseMove) : drawImage();
-   /* gsap.to('.arrow',{
-        opacity:0,
-        duration:1,
-        top:'100%',
-        ease:'power2.out'
-    },0)*/
-    
     
     circle_infinite();
 
@@ -96,6 +86,7 @@ function getAngle(p1,p2) {
     return Math.atan2(dy,dx);
 }
 function drawCircles(e){
+    scratch_flag = true;
     let nextPos;
     if(e.touches == undefined) {
         nextPos = {x:e.offsetX, y:e.offsetY};
@@ -194,28 +185,26 @@ ScrollTrigger.create({
 })
 circle.addEventListener('click',(e)=>{
     e.preventDefault();
-    //setTimeout(() => {
-        gsap.to('.arrow_bottom',{
-           // position:'sticky',
-            left:'0%',
-            top:'0%',
-            width:circle_wrap_width,
-            height:circle_wrap_width,
-            zIndex:1,
-            //delay:.5,
-            ease:'power1.out',
-            duration:1,
-        })
-        gsap.to(window,{
-            duration:1.3,
-            scrollTo:linkST.start,
-            overwrite:"auto",
-            //delay:.2,
-            onComplete:()=>{
-                document.querySelector('body').classList.add('main_complete');
-            }
-        })  
-    //},10)
+    gsap.to('.arrow_bottom',{
+        // position:'sticky',
+        left:'0%',
+        top:'0%',
+        width:circle_wrap_width,
+        height:circle_wrap_width,
+        zIndex:1,
+        //delay:.5,
+        ease:'power1.out',
+        duration:1,
+    })
+    gsap.to(window,{
+        duration:1.3,
+        scrollTo:linkST.start,
+        overwrite:"auto",
+        //delay:.2,
+        onComplete:()=>{
+            document.querySelector('body').classList.add('main_complete');
+        }
+    })  
   
     document.querySelectorAll('.circle_text span').forEach(el=>{
         gsap.to(el,{
@@ -248,10 +237,7 @@ function scratch_txt(e){
 function onMouseDown(e){
     if(isMouseDown) return;
     isMouseDown = true;
-    test = true;
     prevPos ={x:e.offsetX ||e.touches[0].clientX, y:e.offsetY||e.touches[0].clientY};
-
-  
 }
 function onMouseUp(){
     isMouseDown = false;
@@ -259,11 +245,11 @@ function onMouseUp(){
 }
 function onMouseMove(e){
     //const testfunc = scratch_txt(e);
-    //console.log(test);
-    if(test === false){
+    if(scratch_flag === false){
         gsap.to('.scratch_txt',{
             x:e.pageX + 20,
             y:e.pageY + 20,
+            duration:1
         })
         gsap.to('.scratch_txt',{
             opacity:1,
@@ -279,6 +265,7 @@ function onMouseMove(e){
     }
     if(!isMouseDown || isEnd) return;
     drawCircles(e);
+
     
 
 }
@@ -295,6 +282,15 @@ canvas.addEventListener('touchend',onMouseUp)
 canvas.addEventListener('mousemove', onMouseMove)
 canvas.addEventListener("touchmove", onMouseMove);
 window.addEventListener('resize',resize)
+
+
+canvas.addEventListener('mouseleave',()=>{
+    gsap.to('.scratch_txt',{
+        opacity:0,
+        ease:'power1.out',
+        delay:.5
+    })
+})
 resize();
 
 
@@ -332,7 +328,6 @@ const nav_btn = () =>{
     return nav_timeline;
 }
 
-ScrollTrigger.config({syncInterval: 500 });
 
 const new_items = gsap.utils.toArray('.items > li');
 const new_item_TL = gsap.timeline({
@@ -343,19 +338,28 @@ const new_item_TL = gsap.timeline({
         end:'+=4000',
         scrub:1,
         pin:true, 
-        //onUpdate: (self) => console.log("progress:", self.progress*100),
+        snap: 1/3,
 
     }
 })
 new_items.forEach((el,idx)=>{
     if(idx !==0) {
+        let new_item_img = el.childNodes[1].children[0];
+        let new_item_txt = el.childNodes[1].children[1];
         new_item_TL.to(el,{
             left:0,
-            ease:'power2.in',
-            onUpdate:(el) => console.log("progress:", el),
-
+            //ease:'Power3.easeInOut',
+            stagger:1.15,
             //스케일키우기
         })
+        new_item_TL.to(new_item_img,{
+            scale : 1,
+            stagger:1.15,
+        },">-.3")
+        /*new_item_TL.to(new_item_txt,{
+            skewY:'0deg',
+            stagger:1.15,
+        },">-.3")*/
     }
 
 })
