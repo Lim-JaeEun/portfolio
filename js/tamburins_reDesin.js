@@ -86,7 +86,6 @@ function getAngle(p1,p2) {
     return Math.atan2(dy,dx);
 }
 function drawCircles(e){
-    scratch_flag = true;
     let nextPos;
     if(e.touches == undefined) {
         nextPos = {x:e.offsetX, y:e.offsetY};
@@ -105,6 +104,7 @@ function drawCircles(e){
         ctx.closePath();
     }
     prevPos = nextPos;
+    
     remove_Percent();
 }    
 // Throttle
@@ -134,6 +134,7 @@ function remove_Percent(){
 
   
         if(percent > 60) {
+            scratch_flag = true;
             gsap.to(canvas,{
                 opacity:0, 
                 duration:.8, 
