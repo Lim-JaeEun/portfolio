@@ -1,0 +1,53 @@
+body {
+    background-color: #67e1b0;
+    overflow: hidden;
+}
+
+.draggable_area {
+    position: relative;
+    width: 100vw;
+    height:100vh;
+    /*background: #fefefe;*/
+
+    .img_wrap {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        height: auto;
+        z-index: 99;
+        overflow: hidden;
+        text-align: right;
+        max-width: 280px;
+        background-color: #ffffff3d;
+        a {
+            position: relative;
+            overflow: hidden;
+            display: block;
+            width: 100%;
+            height: 500px;
+            max-width: 100%;
+            background-repeat: no-repeat;
+
+            &:nth-child(1) {
+                background-image: url('https://mohs.cafe24.com/web/upload/popup_heart.svg');
+               
+            }
+
+        }
+        &:nth-child(2) {
+            a {
+                background-image: url('https://mohs.cafe24.com/web/upload/popup_sqaure_text.svg');
+                height: 269px;
+            }
+        
+        }
+        .close_btn {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            margin: 0;
+        }
+
+    }
+}
