@@ -19,9 +19,9 @@ function setScreenSize() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
   
-window.addEventListener('load',()=>{
-    document.querySelector('.video_wrap').style.display='block'
-})
+window.onload = function() {
+    document.querySelector('.video_wrap').style.display='block';
+} 
 
 //메인
     const main_texts = document.querySelectorAll('.ani_text_svg');
