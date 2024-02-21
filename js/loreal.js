@@ -21,7 +21,6 @@ function setScreenSize() {
   
 window.onload = function() {
     document.querySelector('.video_wrap').style.display='block';
-    console.log('gg');
 } 
 
 //메인
