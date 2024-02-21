@@ -19,7 +19,9 @@ function setScreenSize() {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
   
-
+window.addEventListener('load',()=>{
+    document.querySelector('.video_wrap').style.display='block'
+})
 
 //메인
     const main_texts = document.querySelectorAll('.ani_text_svg');
@@ -192,21 +194,6 @@ responsive_event1.add("(max-width:479px)",()=>{
         }
     })
 })
-/*
-intro_tl.to('.sc_intro',{
-    y:'-100%'
-},'b')
-intro_tl.to('.blackout',{
-    opacity:'0'
-},'b')
-*/
-/*
-1207
-
-*/
-
-/*
-1207*/
 
 
 const hori_slide = document.querySelectorAll('.pos_absolute');
