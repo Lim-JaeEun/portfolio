@@ -39,7 +39,9 @@ body {
 }
 .draggable_area .img_wrap .close_btn {
   position: absolute;
-  top: 7px;
-  right: 7px;
+  top: 0;
+  right: 0;
   margin: 0;
+  padding: 1em;
+  cursor: pointer;
 }/*# sourceMappingURL=ohm_style.css.map */
