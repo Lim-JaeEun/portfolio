@@ -654,8 +654,9 @@ header {
                     }
                     @include mobile(){
                         background: linear-gradient(0deg, white, #d4efff);
-                        justify-content: flex-end;
-                        padding-bottom: 25em;
+                        justify-content: center;
+                        padding-top: 200px;
+                        gap: 60px;
                     }
                     &::before {
                         content: '';

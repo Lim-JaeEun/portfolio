@@ -12,17 +12,6 @@ gsap.ticker.add((time)=>{
 gsap.ticker.lagSmoothing(0)
 
 
-function setScreenSize() {
-    //먼저 뷰포트 높이를 얻고 1%를 곱하여 vh 단위 값을 얻습니다.
-    let vh = window.innerHeight * 0.01;
-    //그런 다음 --vh 사용자 정의 속성의 값을 문서의 루트로 설정합니다.
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
-  
-window.onload = function() {
-    document.querySelector('.video_wrap').style.display='block';
-} 
-
 //메인
     const main_texts = document.querySelectorAll('.ani_text_svg');
     const main_texts_svg = document.querySelectorAll('.ani_text_svg img');
@@ -59,7 +48,6 @@ window.onload = function() {
             stagger:.5,
             delay:.5
         })
-        setScreenSize();
     })
 
 /*nav_btn*/
@@ -392,8 +380,8 @@ responsive_event3.add("(max-width:479px)",()=>{
 
 
 
-
-
+const responsive_event4 = gsap.matchMedia();
+responsive_event4.add("(min-width:1023px)",()=>{ 
 const video_tl = gsap.timeline({
     scrollTrigger:{
       trigger:'.sc_video',
@@ -409,6 +397,45 @@ const video_tl = gsap.timeline({
       borderRadius:'0px',
     }
   )
+
+
+})
+responsive_event4.add("(min-width:480px) and (max-width:767px)",()=>{
+    const video_tl = gsap.timeline({
+        scrollTrigger:{
+          trigger:'.sc_video',
+          start:'-15% top',
+          end:'bottom bottom',
+          scrub:1,
+        }
+      })
+      
+      video_tl.to('.sticky-rect_element',{
+          width:'100vw',
+          height:'100vh',
+          borderRadius:'0px',
+        }
+      )
+    
+})
+responsive_event4.add("(max-width:479px)",()=>{
+    const video_tl = gsap.timeline({
+        scrollTrigger:{
+            trigger:'.sc_video',
+            start:'-15% top',
+            end:'bottom bottom',
+            scrub:1,
+        }
+        })
+        
+        video_tl.to('.sticky-rect_element',{
+            width:'100vw',
+            height:'100vh',
+            borderRadius:'0px',
+        }
+        )
+    
+})
 document.querySelector('.sc_chart').addEventListener('load',()=>{
     map
 })
@@ -442,8 +469,8 @@ document.querySelector('footer').addEventListener('mouseover',(e)=>{
     },'t')
 })
 
-const responsive_event4 = gsap.matchMedia();
-responsive_event4.add("(max-width:479px)",()=>{ 
+const responsive_event5 = gsap.matchMedia();
+responsive_event5.add("(max-width:479px)",()=>{ 
 
     document.querySelector('footer').addEventListener('touchstart',(e)=>{
         const footer_tl = gsap.timeline({

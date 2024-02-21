@@ -1,15 +1,3 @@
-
-/*const main = document.querySelector('.is--hero');
-main.style.cursor = 'none';
-
-
-let mouseCursor = document.querySelector('.cursor');
-main.addEventListener("scroll", cursor);
-main.addEventListener("mousemove", cursor);
-function cursor(e) {
-  mouseCursor.style.top = e.pageY + "px";
-  mouseCursor.style.left = e.pageX + "px";
-}*/
 /*텍스트 쪼개기*/
 
 function text_splice(text){
@@ -22,22 +10,6 @@ function text_splice(text){
   ori_Text.innerHTML = newText;
   ori_Text.setAttribute("aira-label",ori_Text.innerText);
 }
-
-
-
-/*text_splice('.nav_logo-img');
-let logo_span = document.querySelectorAll('.nav_logo-img span');
-logo_span.forEach((el,idx)=>{
-  el.addEventListener('mouseenter',()=>{
-    logo_span[idx].style.transform = `translateY(-20px)`
-  }),
-  el.addEventListener('mouseleave',()=>{
-    logo_span[idx].style.transform = `translateY(0px)`
-  })
-})*/
-
-
-
 
 //Logo Text 
 gsap.from('.nav_logo',{
@@ -295,16 +267,13 @@ now_btn.to('.hover--div',{
     paused:true,
     onUpdate:progress,
     ease:"none",
-
-    
   })
   imageoverlap.to('.overlap_image',{
     x:'0vw',
     y:'0vh',
     duration:1.5,
-    invalidateOnRefresh:true,
+    invalidateOnRefresh:true, // true,: 페이지 리프레시 시 ScrollTrigger 캐시를 재설정합니다.
     ease: "back.out(2)",
-    //ease:test === true?"back.inOut(2)":"power1.out",
 
     onReverseComplete: clearStyles,
     stagger:{
@@ -321,12 +290,9 @@ now_btn.to('.hover--div',{
 
   document.querySelector('.hover--div').addEventListener('mouseleave',()=>{
 
-    imageoverlap.timeScale(1.5);
     if(imageoverlap.progress() === 1){
-      
      setTimeout(()=>{
         imageoverlap.timeScale(2);
-        
         imageoverlap.reverse();
      },300)
     }else {
@@ -334,43 +300,8 @@ now_btn.to('.hover--div',{
       imageoverlap.reverse();
     }
     
-    /*imageoverlap.from('.overlap_image',{
-      x:'0vw',
-      y:'0vh',
-      duration:.8,
-      invalidateOnRefresh:true,
-      //ease: "back.out(2)",
-      //ease:test === true?"back.inOut(2)":"power1.out",
-  
-      onReverseComplete: clearStyles,
-      stagger:{
-        each:.3,
-        from:"start"
-      }
-    
-    }) */
-    /*
-       document.querySelectorAll('.overlap_image').forEach((el,idx)=>{
-      console.log(el);
-      imageoverlap.from(el,{
-        
-      })
-    })*/
   })
 
-  
- 
-  
- 
-
-
-  let images = document.querySelectorAll('.overlap_image');
-  let zIndexNum = 1;
-  images.forEach(el=>{
-    el.addEventListener('click',(e)=>{
-      e.target.style.zIndex = zIndexNum++;
-    })
-  })
 
 const txt__left = gsap.timeline({
   paused:true

@@ -737,8 +737,9 @@ header .menu_wrap .nav_close_btn:hover .line {
 @media (max-width: 479px) {
   .contents .sc_story .hori_wrap .hori_div .hori_zone {
     background: linear-gradient(0deg, white, #d4efff);
-    justify-content: flex-end;
-    padding-bottom: 25em;
+    justify-content: center;
+    padding-top: 200px;
+    gap: 60px;
   }
 }
 .contents .sc_story .hori_wrap .hori_div .hori_zone::before {
